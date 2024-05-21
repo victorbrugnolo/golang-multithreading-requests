@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -46,13 +45,13 @@ func SearchCEP(cep string) {
 
 	go func() {
 		cepData, _ = GetCepDataFromBrasilAPI(cep, ctx)
-		fmt.Printf("%+v\n", cepData)
+		log.Printf("%+v\n", cepData)
 		wg.Done()
 	}()
 
 	go func() {
 		cepData, _ = GetCepDataFromViaCepAPI(cep, ctx)
-		fmt.Printf("%+v\n", cepData)
+		log.Printf("%+v\n", cepData)
 		wg.Done()
 	}()
 
